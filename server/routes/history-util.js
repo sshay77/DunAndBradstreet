@@ -9,7 +9,6 @@ class History {
                 oldHistory = []
             }else {
                 oldHistory = JSON.parse(oldData);
-                console.log(oldHistory);
             };
 
             oldHistory.push(query);
@@ -17,8 +16,6 @@ class History {
             fs.writeFile('history.json', JSON.stringify(oldHistory), err => {
                 if(err) {
                     console.error(err.message);                    
-                }else {
-                    console.log('The file has been saved!');
                 }
             });
         });
@@ -33,7 +30,6 @@ class History {
                     oldHistory = []
                 }else {
                     oldHistory = JSON.parse(oldData);
-                    console.log(oldHistory);
                 };
                 resolve(oldHistory);
             });

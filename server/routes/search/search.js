@@ -1,5 +1,5 @@
 const express = require('express');
-const history = require('../history');
+const history = require('../history-util');
 
 const router = express.Router();
 
