@@ -1,9 +1,11 @@
 const ApiPort = 5000;
-export const ApiUrl = `http://localhost:${ApiPort}/search?query=`
+export const ApiSearchUrl = `http://localhost:${ApiPort}/search?query=`
+export const ApiHistoryUrl = `http://localhost:${ApiPort}/history`
 export const PageSize = 10;
 
 export default {
     ApiPort,
-    ApiUrl,
-    PageSize
+    ApiSearchUrl,
+    PageSize,
+    ApiHistoryUrl
 };

@@ -1,11 +1,16 @@
 const express = require('express');
+const history = require('../history');
+
 const router = express.Router();
 
-const { dukApiUrl } = require('../config');
+const { dukApiUrl } = require('../../config');
 
 router.get('/', async (req, res) => {
-    const { query: q = 'test' } = req.query;
-    const url = dukApiUrl + encodeURIComponent(q);
+    const { query = 'test', save } = req.query;
+    if (save) {
+        history.save(query);
+    }
+    const url = dukApiUrl + encodeURIComponent(query);
 
     let data;
 

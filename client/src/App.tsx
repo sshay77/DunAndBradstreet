@@ -4,7 +4,7 @@ import "./App.css"
 import Pagination from "./features/pagination/Pagination";
 import Title from "./features/title/Title";
 import Sidebar from "./features/sidebar/Sidebar";
-import {ApiUrl, PageSize} from "./config"
+import {ApiSearchUrl, PageSize, ApiHistoryUrl} from "./config"
 
 interface Result {
   URL: string;
@@ -23,6 +23,9 @@ function App() {
 
   useEffect(() => {
     setQuery('');
+    fetch(ApiHistoryUrl)
+      .then(res => res.json())
+      .then(data => setHistory(data.data));
   }, []);
 
   const setCount = (i: number, count: number) => {
@@ -33,7 +36,8 @@ function App() {
   const search = async (query: string, saveToHistory: boolean = true) => {
     let response;
     try {
-      response = await fetch(ApiUrl + query).then(res => res.json());
+      const url = ApiSearchUrl + query + ( saveToHistory ? '&save=true' : '');
+      response = await fetch(url).then(res => res.json());
       if (!response.success) {
         throw new Error(response.message);
       }
