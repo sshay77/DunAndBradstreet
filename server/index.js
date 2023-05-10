@@ -30,27 +30,7 @@ app.get('/', async (req, res) => {
         return;
     }
 
-    const results = [];
-
-    for (const relatedTopic of data.RelatedTopics) {
-        
-        const isCategoryItem = !!relatedTopic.Name;
-        if (isCategoryItem) {
-            const topics = relatedTopic.Topics;
-            const result = topics.map(topic => ({
-                URL: topic.FirstURL,
-                title: topic.Text
-            }
-            ));
-            results.push(...result);
-
-        }else {
-            results.push({
-                URL: relatedTopic.FirstURL,
-                title: relatedTopic.Text
-            });
-        }
-    }
+    const results = exractResults(data.RelatedTopics);
 
     res.send({
         success: true,
@@ -61,3 +41,29 @@ app.get('/', async (req, res) => {
 app.listen(serverPort, () => {
     console.log(`server app listening on port ${serverPort}`);
 });
+
+function exractResults(relatedTopics) {
+    const results = [];
+
+    for (const relatedTopic of relatedTopics) {
+
+        const isCategoryItem = !!relatedTopic.Name;
+
+        if (isCategoryItem) {
+            const topics = relatedTopic.Topics;
+            const result = topics.map(topic => ({
+                URL: topic.FirstURL,
+                title: topic.Text
+            }
+            ));
+            results.push(...result);
+
+        } else {
+            results.push({
+                URL: relatedTopic.FirstURL,
+                title: relatedTopic.Text
+            });
+        }
+    }
+    return results;
+}
