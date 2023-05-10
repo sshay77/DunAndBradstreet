@@ -4,9 +4,7 @@ import "./App.css"
 import Pagination from "./features/pagination/Pagination";
 import Title from "./features/title/Title";
 import Sidebar from "./features/sidebar/Sidebar";
-
-const ApiUrl = 'http://localhost:5000/?query=';
-const PageSize = 10;
+import {ApiUrl, PageSize} from "./config"
 
 interface Result {
   URL: string;
