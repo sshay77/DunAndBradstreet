@@ -1,7 +1,7 @@
 # Dun & Bradstreet
-## Running the application
-* from root project change directory to server folder and run `npm start`
-* from root project change directory to client folder and run `npm start`
+## Installing and Running the Application
+* from root project change directory to **server** folder. run `npm i` and then run `npm start`.
+* from root project change directory to **client** folder. run `npm i` and then run `npm start`
 ## Configuration
 
 ### Cors
