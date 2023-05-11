@@ -3,14 +3,14 @@ const history = require('../history-util');
 
 const router = express.Router();
 
-const { dukApiUrl } = require('../../config');
+const { duckApiUrl } = require('../../config');
 
 router.get('/', async (req, res) => {
     const { query = 'test', save } = req.query;
     if (save) {
         history.save(query);
     }
-    const url = dukApiUrl + encodeURIComponent(query);
+    const url = duckApiUrl + encodeURIComponent(query);
 
     let data;
 

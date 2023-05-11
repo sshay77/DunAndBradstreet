@@ -45,7 +45,12 @@ aside ul li {
   list-style: none;
   cursor: pointer;
 }
+
 .pagination-bar {
   margin-top: 30px;
   align-self: center;
+}
+
+.find span {
+  font-size: 13.33px;
 }
