@@ -9,7 +9,7 @@ The client is fetching data from the server using CORS.
 The application is configured by default correctly, but if it can't run on the default ports you can configure them in the `config.js` at the server directory, and `config.ts` at the client directory.
 
 ### PageSize
-This const define the amount of results per page. Current configuration is 10 results per page.
+This const defines the amount of results per page. Current configuration is 10 results per page.
 It is configured in the client directory at `config.ts`.
 
 ## Application Features
