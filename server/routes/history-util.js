@@ -3,17 +3,17 @@ const fs = require('fs');
 class History {
     save(query) {
         fs.readFile('history.json',(err, oldData) => {
-            let oldHistory;
+            let history;
             if(err) {
                 console.error(err.message);
-                oldHistory = []
+                history = []
             }else {
-                oldHistory = JSON.parse(oldData);
+                history = JSON.parse(oldData);
             };
 
-            oldHistory.push(query);
+            history.push(query);
             
-            fs.writeFile('history.json', JSON.stringify(oldHistory), err => {
+            fs.writeFile('history.json', JSON.stringify(history), err => {
                 if(err) {
                     console.error(err.message);                    
                 }
@@ -24,14 +24,14 @@ class History {
     load() {
         return new Promise((resolve) => {
             fs.readFile('history.json',(err, oldData) => {
-                let oldHistory;
+                let history;
                 if(err) {
                     console.error(err.message);
-                    oldHistory = []
+                    history = []
                 }else {
-                    oldHistory = JSON.parse(oldData);
+                    history = JSON.parse(oldData);
                 };
-                resolve(oldHistory);
+                resolve(history);
             });
         });
     }

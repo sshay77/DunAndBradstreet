@@ -22,7 +22,7 @@ function getHighlightedText(text: string, highlight: string, setCount: (count: n
         return text;
     }
     
-    // Split text on higlight term, include term itself into parts, ignore case
+    // Split text on highlight term, include term itself into parts, ignore case
     const parts = text.split(new RegExp(`(${highlight})`, "gi"));
 
     const isPartSimilarToHighlight = (part: string) => part.toLowerCase() === highlight.toLowerCase();

@@ -10,7 +10,7 @@ The application is configured by default correctly, but if it can't run on the d
 
 ### PageSize
 This const define the amount of results per page. Current configuration is 10 results per page.
-It is configuered in the client directory at config.ts.
+It is configured in the client directory at `config.ts`.
 
 ## Application Features
 * searching for a given term using duckduckgo api.

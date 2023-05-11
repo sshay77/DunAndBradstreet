@@ -6,7 +6,7 @@ const router = express.Router();
 const { duckApiUrl } = require('../../config');
 
 router.get('/', async (req, res) => {
-    const { query = 'test', save } = req.query;
+    const { query, save } = req.query;
     if (save) {
         history.save(query);
     }
@@ -26,7 +26,7 @@ router.get('/', async (req, res) => {
         return;
     }
 
-    const results = exractResults(data.RelatedTopics);
+    const results = extractResults(data.RelatedTopics);
 
     res.send({
         success: true,
@@ -34,7 +34,39 @@ router.get('/', async (req, res) => {
     });
 });
 
-function exractResults(relatedTopics) {
+// This end point is currently not used by the client
+// since this feature is implemented at the get endpoint.
+// when the get endpoint receive 'save' query param it save the query 
+// to the history file for persistence. 
+router.post('/', async (req, res) => {
+    const { query } = req.query;
+    history.save(query);
+    
+    const url = duckApiUrl + encodeURIComponent(query);
+
+    let data;
+
+    try {
+        const response = await fetch(url);
+        data = await response.json();
+
+    } catch (error) {
+        res.send({
+            success: false,
+            message: error.message
+        });
+        return;
+    }
+
+    const results = extractResults(data.RelatedTopics);
+
+    res.send({
+        success: true,
+        data: results
+    });
+});
+
+function extractResults(relatedTopics) {
     const results = [];
 
     for (const relatedTopic of relatedTopics) {

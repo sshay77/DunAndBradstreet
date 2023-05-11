@@ -1,5 +1,5 @@
 import React from 'react'
-import './siderbar.css'
+import './sidebar.css'
 
 interface Props {
     history: string[];

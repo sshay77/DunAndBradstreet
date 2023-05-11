@@ -94,7 +94,7 @@ function App() {
           <div className="find">
             <input
               type="text"
-              placeholder="Enter text to hightlight"
+              placeholder="Enter text to highlight"
               value={highlight}
               onChange={(e) => setHighlight(e.target.value)}
             ></input>
