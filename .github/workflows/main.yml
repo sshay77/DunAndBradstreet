@@ -15,7 +15,7 @@ jobs:
         uses: checkmarx/ast-github-action@main #Github Action version
         with:
           project_name: Shays github plugin Checkmarx One Project
-          cx_tenant: dev_tenant
-          base_uri: https://ast-master-components.dev.cxast.net 
+          cx_tenant: galactica
+          base_uri: https://deu.iam.checkmarx.net 
           cx_client_id: ${{ secrets.CX_CLIENT_ID }}
           cx_client_secret: ${{ secrets.CX_CLIENT_SECRET }}
